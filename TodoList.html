@@ -3,15 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo list app</title>
+    <title>TodoList</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
     <h1>Todo List</h1>
-    <header><input id="content"/><button id="add">Add</button></header>
-    <ul>
-      <li></li>
-    </ul>
+    <header>
+      <input id="content" type="text" placeholder="할일을 입력하세요" />
+      <button id="add" type="button">추가</button>
+    </header>
+    <ul class="todo" id="todo"></ul>
     <script src="Todo.js"></script>
   </body>
 </html>
