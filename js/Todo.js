@@ -1,9 +1,9 @@
 // 추가 버튼
-document.createElementById("add").addEventListener("click", () => {
+document.getElementById("add").addEventListener("click", () => {
   let value = document.getElementById("content").value;
   if (value) {
     addTodo(value);
-    value = "";
+    document.getElementById("content").value = "";
   }
 });
 
@@ -16,8 +16,9 @@ const addTodo = (text) => {
   let buttons = document.createElement("div");
   buttons.classList.add("buttons");
 
-  // let complete = document.createElement("button");
-  // add.classList.add("complete");
+  let complete = document.createElement("button");
+  complete.classList.add("complete");
+  complete.innerText = "완료";
 
   let remove = document.createElement("button");
   remove.classList.add("remove");
@@ -28,4 +29,12 @@ const addTodo = (text) => {
   item.appendChild(buttons);
 
   list.insertBefore(item, list.childNodes[0]);
+
+  complete.addEventListener("click", () => {
+    item.classList.toggle("completed");
+  });
+
+  remove.addEventListener("click", () => {
+    list.removeChild(item);
+  });
 };
