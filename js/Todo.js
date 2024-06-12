@@ -30,11 +30,20 @@ const addTodo = (text) => {
 
   list.insertBefore(item, list.childNodes[0]);
 
-  complete.addEventListener("click", () => {
-    item.classList.toggle("completed");
-  });
+  complete.addEventListener("click", completeTodo);
 
   remove.addEventListener("click", () => {
     list.removeChild(item);
   });
+};
+
+const completeTodo = () => {
+  let item = this.parentNode.parentNode;
+  let parent = item.parentNode;
+  let id = parent.id;
+
+  let target =
+    id === "todo"
+      ? document.getElementById("completedTodo")
+      : document.getElementById("todo");
 };

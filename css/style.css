@@ -34,3 +34,8 @@ li {
     border-bottom: 1px solid #ffc107;
     padding: 10px;
 }
+
+#completedTodo {
+    margin-top: 30px;
+    border-top: 1px solid #ff7b07;
+}
