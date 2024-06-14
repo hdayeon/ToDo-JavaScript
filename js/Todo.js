@@ -30,15 +30,14 @@ const addTodo = (text) => {
 
   list.insertBefore(item, list.childNodes[0]);
 
-  complete.addEventListener("click", completeTodo);
+  complete.addEventListener("click", () => completeTodo(item));
 
   remove.addEventListener("click", () => {
     list.removeChild(item);
   });
 };
 
-const completeTodo = () => {
-  let item = this.parentNode.parentNode;
+const completeTodo = (item) => {
   let parent = item.parentNode;
   let id = parent.id;
 
@@ -46,4 +45,7 @@ const completeTodo = () => {
     id === "todo"
       ? document.getElementById("completedTodo")
       : document.getElementById("todo");
+
+  parent.removeChild(item);
+  target.insertBefore(item, target.childNodes[0]);
 };
