@@ -49,3 +49,16 @@ const completeTodo = (item) => {
   parent.removeChild(item);
   target.insertBefore(item, target.childNodes[0]);
 };
+
+const completedTodoStyle = () => {
+  let completedTodo = document.getElementById("completedTodo");
+  if (completedTodo.children.length > 0) {
+    completedTodo.style.borderTop = "1px solid #ff7b07";
+  } else {
+    completedTodo.style.borderTop = "none";
+  }
+};
+
+// MutationObserver로 completedTodo 변화 감지
+const observer = new MutationObserver(completedTodoStyle);
+observer.observe(document.getElementById("completedTodo"), { childList: true });
