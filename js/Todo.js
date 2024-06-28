@@ -50,15 +50,24 @@ const completeTodo = (item) => {
   target.insertBefore(item, target.childNodes[0]);
 };
 
-const completedTodoStyle = () => {
+// li 있을 때만 스타일 적용
+const todoStClass = () => {
+  let todo = document.getElementById("todo");
+  if (todo.children.length > 0) {
+    todo.classList.add("hasLi");
+  } else {
+    todo.classList.remove("hasLi");
+  }
+
   let completedTodo = document.getElementById("completedTodo");
   if (completedTodo.children.length > 0) {
-    completedTodo.style.borderTop = "1px solid #ff7b07";
+    completedTodo.classList.add("hasLi");
   } else {
-    completedTodo.style.borderTop = "none";
+    completedTodo.classList.remove("hasLi");
   }
 };
 
-// MutationObserver로 completedTodo 변화 감지
-const observer = new MutationObserver(completedTodoStyle);
+// todo와 completedTodo 변화 감지
+const observer = new MutationObserver(toggleTodoClass);
+observer.observe(document.getElementById("todo"), { childList: true });
 observer.observe(document.getElementById("completedTodo"), { childList: true });

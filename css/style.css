@@ -35,16 +35,22 @@ header {
   }
 }
 
-#todo {
-  border-top: 1px solid #ffc107;
-  padding: 10px;
-}
-
 #completedTodo {
   margin-top: 100px;
   li {
     opacity: 50%;
   }
+}
+
+/* li 있을 때 스타일 */
+#todo.hasLi {
+  border-top: 1px solid #ffc107;
+  padding: 10px;
+}
+
+/* li 있을 때 스타일 */
+#completedTodo.hasLi {
+  border-top: 1px solid #ff7b07;
 }
 
 li {
