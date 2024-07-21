@@ -1,9 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("add").addEventListener("click", () => {
-    let value = document.getElementById("content").value;
+  const addButton = document.getElementById("add");
+  const contentInput = document.getElementById("content");
+  const todoList = document.getElementById("todo");
+  const completedTodoList = document.getElementById("completedTodo");
+
+  addButton.addEventListener("click", () => {
+    const value = contentInput.value;
     if (value) {
       addTodo(value);
-      document.getElementById("content").value = "";
+      contentInput.value = "";
     }
   });
 
@@ -35,6 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
     remove.addEventListener("click", () => {
       list.removeChild(item);
     });
+
+    toggleTodoClass();
   };
 
   const completeTodo = (item) => {
@@ -48,22 +55,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     parent.removeChild(item);
     target.insertBefore(item, target.childNodes[0]);
+
+    toggleTodoClass();
+  };
+
+  const toggleTodoClass = () => {
+    toggleClass(todoList);
+    toggleClass(completedTodoList);
   };
 
   // li 있을 때만 스타일 적용
-  const todoStClass = () => {
-    let todo = document.getElementById("todo");
-    if (todo.children.length > 0) {
-      todo.classList.add("hasLi");
+  const toggleClass = (list) => {
+    if (list.children.length > 0) {
+      list.classList.add("hasLi");
     } else {
-      todo.classList.remove("hasLi");
-    }
-
-    let completedTodo = document.getElementById("completedTodo");
-    if (completedTodo.children.length > 0) {
-      completedTodo.classList.add("hasLi");
-    } else {
-      completedTodo.classList.remove("hasLi");
+      list.classList.remove("hasLi");
     }
   };
 
