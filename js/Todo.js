@@ -75,8 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // todo와 completedTodo 변화 감지
   const observer = new MutationObserver(toggleTodoClass);
-  observer.observe(document.getElementById("todo"), { childList: true });
-  observer.observe(document.getElementById("completedTodo"), {
-    childList: true,
-  });
+  observer.observe(todoList, { childList: true });
+  observer.observe(completedTodoList, { childList: true });
 });
